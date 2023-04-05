@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        .header{
+            display: flex;
+            float: right; 
+        }
+        .DATA{
+            display: flex;
+        }
+        .home{
+            padding: 10px;
+        }
+        .shop{
+            padding: 10px;  
+        }
+    </style>
+</head>
+<body>
+   <div class="header">
+    <div class="home"><button onclick="home()"><i class="fa-solid fa-house"></i></button></div>
+    <div class="shop"><button onclick="shopping()"><i class="fa-solid fa-cart-plus"></i>
+    <span id="counting">0</span>
+    </div>
+</div>
+    <div class="DATA" id="data"></div>
+    <div id="amount"></div>
+  
+
+    <script>
+        var product =[
+            {
+                img:"https://tse2.mm.bing.net/th/id/OIP.K5NBsZmcSKyYl8o4z5TiBAAAAA?pid=ImgDet&rs=1",
+                name: "NINJA STICKER",
+                price: "150",
+                id:1
+            },
+            {
+                img:"https://tse2.mm.bing.net/th/id/OIP.7h5pA3ktSVX0tHNuiRIsfQAAAA?pid=ImgDet&rs=1",
+                name: "S CIRCLE",
+                price: "250",
+                id:2   
+            },
+            {
+                img:"https://www.reposummit.com/wp-content/uploads/200px-X-200px-Logo-003366-RRGGBB-Background-1.png",
+                name: "CHAIN ROAD",
+                price: "300",
+                id:3
+            }
+        ]
+         var temp=[];
+        for (let index=0;index < product.length;index++){
+             temp.push(`<div><img src=`+product[index].img+`><div>`+product[index].name+`</div><div>`+product[index].price+`</div><div><button onclick="addcart(`+index+`)">Add to cart</button></div></div>`)
+            
+        }
+        document.getElementById("data").innerHTML=temp.join('');
+
+        var temp1=[];
+        function addcart(index){
+          var newdata = {
+                img:product[index].img,
+                name:product[index].name,
+                price:product[index].price,
+
+                quantity: 1
+             }
+            temp1.push(newdata)
+            
+             document.getElementById("counting").innerHTML=temp1.length;
+         }
+
+        function shopping(){
+            var totalamt=0;
+            var shoplist=[];
+
+            for (let index=0; index<temp1.length;index++){
+                 shoplist.push(`<div><img src=`+temp1[index].img+`><div>`+temp1[index].name+`</div><div>`+temp1[index].price+`</div><div><button onclick="remove(`+index+`)">remove cart</button></div></div>`)
+                  totalamt += + (temp1[index].price)
+            }
+             document.getElementById("amount").innerHTML = totalamt;
+            document.getElementById("data").innerHTML=shoplist.join('');
+           
+        }
+        function remove(index){
+            var temp2=[];
+           temp1.splice(index,1)
+             shopping()
+            document.getElementById("counting").innerHTML=temp1.length;
+            }
+            
+function home(){
+    document.getElementById("data").innerHTML=temp.join("")
+}
+    
+        
+    </script>
+</body>
+</html>

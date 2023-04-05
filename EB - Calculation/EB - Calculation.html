@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*/ function eb() {
+            var a,amt
+            a = document.getElementById("bill").value;
+            if (a <= 100) {
+                amt = a*0 
+                document.getElementById("amount").value = amt;
+             }
+           else if (a >100 & a<= 200) {
+                 amt = 100*0 + (a-100)*1
+                 document.getElementById("amount").value = amt;
+           }  
+           else if (a >200 & a<=300) {
+                 amt = 100*0+100*1+(a-200)*1.5
+                 document.getElementById("amount").value = amt;
+           }
+           else if (a>300 & a<=400) {
+            amt = 100*0+100*1+100*1.5+(a-300)*2
+            document.getElementById("amount").value = amt;
+           }
+           else { 
+            amt = 100*0+100*1+100*1.5+100*2+(a-400)*5
+            document.getElementById("amount").value = amt;
+        }
+        }/*/
+        function eb() {
+            var a,amount
+            a = document.getElementById("bill").value;
+            if (a <=100) {
+            amount = a*0
+            document.getElementById("amount").value = amount;
+        }
+        else if (a>100 && a<=200){
+        amount= 100*0 + (a-100)*1
+        document.getElementById("amount").value = amount;
+    }
+    else if (a>200 && a<=300){
+        amount = 100*0 + 100*1 + (a-200)*1.5
+        document.getElementById("amount").value = amount;
+    }
+    else if (a>300 && a<=400){
+        amount=100*0 + 100*1 + 100*1.5 + (a-300)*2
+        document.getElementById("amount").value = amount;
+    }
+else {
+amount=100*0 + 100*1 + 100*1.5 + 100*2 + (a-400)*5
+document.getElementById("amount").value = amount;
+}
+        }
+        var amar = ["as","cx","nd"]
+        var y2 = amar.findIndex((x,y)=>{
+            if(x=="nd")
+            {
+                return (x,y)
+            }
+        })
+        console.log(y2);
+    </script>
+</head>
+<body>
+    <h1>EB Bill Amount</h1>
+    <label>Units :</label>
+    <input type="number" placeholder="Units" id="bill">
+    <button onclick="eb()">submit</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <label>Rs :</label>
+    <input type="number" placeholder="Amount" id="amount" disabled>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Rollno:</label>
+    <input type="text" placeholder="roll no" id="rollno">
+    <br><br>
+    <label>Name:</label>
+    <input type="text" placeholder="name" id="name">
+    <br><br>
+    <label>Age:</label>
+    <input type="number" placeholder="age" id="age">
+    <br><br>
+    <label>City:</label>
+    <input type="text" placeholder="city" id="city">
+    <br><br>
+    <label>Tamil:</label>
+    <input type="text" placeholder="mark" id="tamil">
+    <br><br>
+    <label>English:</label>
+    <input type="text" placeholder="mark" id="english">
+    <br><br>
+    <label>Maths:</label>
+    <input type="text" placeholder="mark" id="maths">
+    <br><br>
+    <label>Science:</label>
+    <input type="text" placeholder="mark" id="science">
+    <br><br>
+    <label>Social science:</label>
+    <input type="text" placeholder="mark" id="socialscience">
+    <br><br>
+    <button onclick="save()" id="save">submit</button>
+    <table>
+        <tr>
+            <th>ROLLNO</th>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>CITY</th>
+            <th>TAMIL</th>
+            <th>ENGLISH</th>
+            <th>MATHS</th>
+            <th>SCIENCE</th>
+            <th>SOCIAL SCIENCE</th>
+            <th>TOTAL</th>
+            <th>DELETE</th>
+            <th>EDIT</th>
+        </tr>
+        <tbody id="data"></tbody>
+    </table>
+    <script>
+        var studentdata = [
+            {
+                rollno:"ml001",
+                name:"priya",
+                age:"15",
+                city:"chennai",
+                tamil:"56",
+                english:"78",
+                maths:"84",
+                science:"95",
+                socialscience:"93"
+                
+             },
+           {
+                rollno:"ml002",
+                name:"kathir",
+                age:"17",
+                city:"karur",
+                tamil:"76",
+                english:"69",
+                maths:"50",
+                science:"78",
+                socialscience:"86"
+                
+            },
+            {
+                rollno:"ml003",
+                name:"john",
+                age:"16",
+                city:"madurai",
+                tamil:"75",
+                english:"98",
+                maths:"78",
+                science:"82",
+                socialscience:"62"
+                
+            }
+
+        ]
+        var temp=[];
+        for (let i=0;i<studentdata.length;i++){
+            temp.push(document.getElementById("data").innerHTML=`<tr><td>`+studentdata[i].rollno+`</td><td>`+studentdata[i].name+`</td><td>`+studentdata[i].age+`</td><td>`+studentdata[i].city+`</td><td>`+studentdata[i].tamil+`</td><td>`+studentdata[i].english+`</td><td>`+studentdata[i].maths+`</td><td>`+studentdata[i].science+`</td><td>`+studentdata[i].socialscience+`</td><td>`+(+studentdata[i].tamil+ +studentdata[i].english+ +studentdata[i].maths+ +studentdata[i].science+ +studentdata[i].socialscience)+`</td><td><button onclick="Delete(`+i+`)">delete</button></td><td><button onclick="Edit(`+i+`)">edit</button></td></tr>`)
+        }
+        document.getElementById("data").innerHTML=temp.join("");
+
+    function Delete(index){
+        var temp4=[];
+        studentdata.splice(index,1)
+        for (let i = 0; i<studentdata.length; i++) {
+        temp4.push(document.getElementById("data").innerHTML=`<tr><td>`+studentdata[i].rollno+`</td><td>`+studentdata[i].name+`</td><td>`+studentdata[i].age+`</td><td>`+studentdata[i].city+`</td><td>`+studentdata[i].tamil+`</td><td>`+studentdata[i].english+`</td><td>`+studentdata[i].maths+`</td><td>`+studentdata[i].science+`</td><td>`+studentdata[i].socialscience+`</td><td>`+(+studentdata[i].tamil+ +studentdata[i].english+ +studentdata[i].maths+ +studentdata[i].science+ +studentdata[i].socialscience)+`</td><td><button onclick="Delete(`+i+`)">delete</button></td><td><button onclick="Edit(`+i+`)">edit</button></td></tr>`)
+        }
+        document.getElementById("data").innerHTML=temp4.join("")
+}
+
+        norepeatvalueindown = false
+editupdate=0;
+        function Edit(index){
+           var temp1=[];
+           norepeatvalueindown = true;
+editupdate=index;
+            document.getElementById("save").innerHTML="update"
+            document.getElementById("rollno").value=studentdata[index].rollno;
+            document.getElementById("name").value=studentdata[index].name;
+            document.getElementById("age").value=studentdata[index].age;
+            document.getElementById("city").value=studentdata[index].city;
+            document.getElementById("tamil").value=studentdata[index].tamil;
+            document.getElementById("english").value=studentdata[index].english;
+            document.getElementById("maths").value=studentdata[index].maths;
+            document.getElementById("science").value=studentdata[index].science;
+            document.getElementById("socialscience").value=studentdata[index].socialscience;
+        }
+        function save(){
+            if (document.getElementById("rollno").value) {
+                
+           
+            var temp2=[];
+            var newdata={
+            rollno:document.getElementById("rollno").value,
+            name:document.getElementById("name").value,
+            age:document.getElementById("age").value,
+            city:document.getElementById("city").value,
+            tamil:document.getElementById("tamil").value,
+            english:document.getElementById("english").value,
+            maths:document.getElementById("maths").value,
+            science:document.getElementById("science").value,
+            socialscience:document.getElementById("socialscience").value
+        }
+    }
+// studentdata[editupdate]=newdata;
+// studentdata.push(newdata);
+if (norepeatvalueindown) {studentdata[editupdate]=newdata
+    
+}
+else{
+    studentdata.push(newdata)
+}
+for (let i=0;i<studentdata.length;i++){
+    temp2.push(document.getElementById("data").innerHTML=`<tr><td>`+studentdata[i].rollno+`</td><td>`+studentdata[i].name+`</td><td>`+studentdata[i].age+`</td><td>`+studentdata[i].city+`</td><td>`+studentdata[i].tamil+`</td><td>`+studentdata[i].english+`</td><td>`+studentdata[i].maths+`</td><td>`+studentdata[i].science+`</td><td>`+studentdata[i].socialscience+`</td><td>`+(+studentdata[i].tamil+ +studentdata[i].english+ +studentdata[i].maths+ +studentdata[i].science+ +studentdata[i].socialscience)+`</td><td><button onclick="Delete(`+i+`)">delete</button></td><td><button onclick="Edit(`+i+`)">edit</button></td></tr>`)
+}
+document.getElementById("data").innerHTML=temp2.join("");
+
+document.getElementById("rollno").value=""
+document.getElementById("name").value=""
+document.getElementById("age").value=""
+document.getElementById("city").value=""
+document.getElementById("tamil").value=""
+document.getElementById("english").value=""
+document.getElementById("maths").value=""
+document.getElementById("science").value=""
+document.getElementById("socialscience").value=""
+document.getElementById("save").innerHTML="submit"
+norepeatvalueindown=false;
+        }
+        var name= ["anbu","amar","jana","mani"]
+        var list = name.find((x,y) =>{
+            if(x=="amar")
+            return (x,y)
+        });
+        console.log(list);
+    </script>
+</body>
+</html>

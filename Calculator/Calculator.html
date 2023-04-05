@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script>
+    function cls1() {
+        var a,b,c;
+        a=(document.getElementById("google").value);
+        b=(document.getElementsByClassName("micro")[0].value);
+        c= +a + +b;
+        document.getElementById("browser").innerHTML = c;
+    }
+    function cls2() {
+        var x,y,z;
+        x=(document.getElementById("google").value);
+        y=(document.getElementsByClassName("micro")[0].value);
+        z= +x - +y;
+        document.getElementById("browser").innerHTML = z;
+     
+    }
+    function cls3() {
+        var java,c,dbms;
+        java=(document.getElementById("google").value);
+        c=(document.getElementsByClassName("micro")[0].value);
+        dbms= +java * +c;
+        document.getElementById("browser").innerHTML = dbms;
+    }
+    function cls4() {
+        var java,c,dbms;
+        java=(document.getElementById("google").value);
+        c=(document.getElementsByClassName("micro")[0].value);
+        dbms= +java / +c;
+        document.getElementById("browser").innerHTML = dbms;
+    }
+    function cls5() {
+        document.getElementById("google").value = '000';
+        document.getElementsByClassName("micro")[0].value = '000';
+        document.getElementById("browser").innerHTML = 'Empty box';
+    }
+    
+   </script>
+</head>
+<body>
+    
+    <div class="header">
+   <input type="number" placeholder="debt amt" id="google"><br>
+   <input type="number" placeholder="creditmamt" class="micro"><br>
+   <button onclick="cls1()">plus+</button>
+   <button onclick="cls2()">mines-</button><br>
+   <button onclick="cls3()">multiple*</button>
+   <button onclick="cls4()">divide/</button><br>
+   <button onclick="cls5()">clear</button>
+   <p id="browser">000</p>
+</div>
+
+<style>
+        
+.header {
+    background-color: rgb(236, 89, 9);
+    width: 250px;
+    height: 250px;
+   margin: 200px 300px;
+}  
+#google{
+    margin: 10px;
+}
+.micro{
+    margin: 10px;
+}
+button{
+    margin: 10px;
+    font-weight: bold;
+    background-color: rgb(192, 226, 43);
+  
+}
+#browser{
+    margin: 10px;
+}
+</style>
+</body>
+</html>
